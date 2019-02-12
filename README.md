@@ -12,7 +12,7 @@ under `/private-ssh-key`.
 
 ### Configuration
 
-- `$PORT` the port you want to forward
+- `$PORTS` the ports you want to forwarded, space seperated
 - `$USERNAME` the username for your ssh key
 - `$REMOTE_HOST` the remote host you want to set up a local tunnel for
 - `$BIND_ADDRESS` the address you want to bind the tunnel to. (default: `127.0.0.1`)
@@ -20,10 +20,12 @@ under `/private-ssh-key`.
 ### Running the tunnel
 
 ```
-$ docker run --rm -p "9200:9200" \
-    -v $(pwd)/private-key:/private-ssh-key \
-    -e PORT=9200 \
-    -e USERNAME=elasticsearch \
-    -e REMOTE_HOST=my-es-host \
-    jelmersnoeck/ssh-tunnel
+$ docker run --rm \
+    -p "9200:9200" \
+    -p "9201:9201" \
+    -v $(pwd)/private-ssh-key:/private-ssh-key \
+    -e PORTS="9200 9201" \
+    -e USERNAME=username \
+    -e REMOTE_HOST=remote.example.com \
+    putty182/ssh-tunnel
 ```
