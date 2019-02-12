@@ -1,7 +1,4 @@
 #!/bin/sh
-
-PORTS=${$PORTS:-8080 8081}
-
 LOCAL_FORWARDING="";
 
 for PORT in "$PORTS"; do
