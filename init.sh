@@ -1,7 +1,7 @@
 #!/bin/sh
 LOCAL_FORWARDING="";
 
-for PORT in "$PORTS"; do
+for PORT in $PORTS; do
     LOCAL_FORWARDING="$LOCAL_FORWARDING -L *:$PORT:localhost:$PORT "
 done
 
